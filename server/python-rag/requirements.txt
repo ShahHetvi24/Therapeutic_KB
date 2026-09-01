@@ -1,0 +1,6 @@
+sentence-transformers
+python-dotenv
+qdrant-client
+fastapi
+uvicorn
+requests

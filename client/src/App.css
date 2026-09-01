@@ -1,0 +1,72 @@
+:root{
+  --bg: #f7f9fb;
+  --panel: #ffffff;
+  --muted: #6b7280;
+  --accent: #0f4c81;
+  --user-bg: #e6f1ff;
+}
+
+*{box-sizing:border-box}
+body,html,#root{height:100%}
+.app-root{min-height:100vh;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Arial;margin:0}
+.app-header{background:var(--panel);padding:20px 24px;border-bottom:1px solid #e6e9ee}
+.app-header h1{margin:0;font-size:18px}
+.app-header .subtitle{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+/* Disease Selector */
+.disease-selector{max-width:980px;margin:12px auto 0;padding:0 18px 12px}
+.selector-label{display:inline-block;margin-right:12px;font-size:13px;font-weight:500;color:var(--muted)}
+.selector-buttons{display:inline-flex;gap:8px}
+.disease-btn{background:#fff;border:1px solid #e3e6ea;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;transition:all 0.2s}
+.disease-btn:hover{box-shadow:0 1px 3px rgba(15,76,129,0.08)}
+.disease-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.main-container{max-width:980px;margin:12px auto;padding:0 18px}
+.topic-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tag{background:#fff;border:1px solid #e3e6ea;padding:8px 12px;border-radius:999px;cursor:pointer;font-size:13px;transition:all 0.2s}
+.tag:hover{box-shadow:0 1px 3px rgba(15,76,129,0.08)}
+.tag.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.content-area{background:var(--panel);border:1px solid #e6e9ee;padding:18px;border-radius:8px;min-height:60vh;max-height:72vh;display:flex;flex-direction:column}
+
+.welcome-screen{padding:36px;text-align:left}
+.welcome-screen h2{margin:0 0 8px;font-size:20px}
+.welcome-screen .muted{color:var(--muted);margin-bottom:16px}
+.suggested-grid{display:flex;flex-wrap:wrap;gap:10px}
+.suggested-card{background:#f3f6fb;border:1px solid #e6eef9;padding:12px 14px;border-radius:6px;cursor:pointer}
+
+.chat-window{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 6px;display:flex;flex-direction:column;gap:12px;min-height:0}
+.chat-message{display:flex}
+.chat-message.user{justify-content:flex-end}
+.chat-message.assistant{justify-content:flex-start}
+.bubble{max-width:80%;padding:12px;border-radius:8px;background:#f3f5f8}
+.chat-message.user .bubble{background:var(--user-bg)}
+.message-text{white-space:pre-wrap}
+
+.sources{margin-top:10px;border-top:1px solid #eef2f7;padding-top:8px;font-size:13px}
+.source-card{padding:8px 0;border-left:3px solid #e3e6ea;padding-left:8px;margin-bottom:6px}
+.source-header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.source-header strong{font-size:13px;color:#0f4c81}
+.expand-btn{background:none;border:none;padding:0;cursor:pointer;color:var(--muted);font-size:11px;line-height:1}
+.expand-btn:hover{color:#0f4c81}
+.source-meta{display:flex;gap:4px;margin-top:3px}
+.badge{display:inline-block;padding:2px 6px;border-radius:3px;font-size:11px;font-weight:500}
+.badge.disease{background:#e6f1ff;color:#0f4c81}
+.badge.topic{background:#f0f2f5;color:var(--muted)}
+.source-sections{margin-top:4px;font-size:12px;color:var(--muted)}
+.source-sections ul{margin:4px 0 0;padding-left:16px}
+.source-sections li{margin:2px 0}
+.section-preview{color:var(--muted);font-style:italic}
+
+.followups{margin-top:8px}
+.followup-list{display:flex;gap:8px;flex-wrap:wrap}
+.followup-btn{background:#fff;border:1px solid #e6e9ee;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:13px}
+
+.chat-input{display:flex;gap:8px;padding-top:12px;border-top:1px solid #f0f2f5}
+.chat-input textarea{flex:1;padding:10px;border:1px solid #e6e9ee;border-radius:6px;resize:none;font-size:14px}
+.send-btn{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer}
+.send-btn[disabled]{opacity:0.5;cursor:not-allowed}
+
+.error-banner{margin-top:8px;color:#9b1c1c;background:#fff1f1;padding:8px;border-radius:6px}
+
+@media (max-width:640px){.main-container{margin:12px;padding:0 12px}.bubble{max-width:92%}.disease-selector{padding:0 12px 12px}.selector-buttons{flex-wrap:wrap}}
