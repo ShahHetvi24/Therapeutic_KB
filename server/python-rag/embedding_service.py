@@ -9,7 +9,7 @@ def _load_model():
 
     if _MODEL is None:
         print("Loading embedding model...")
-        _MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+        _MODEL = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
         print("Embedding model loaded: all-MiniLM-L6-v2")
 
     return _MODEL
