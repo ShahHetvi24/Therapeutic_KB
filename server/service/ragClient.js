@@ -35,7 +35,7 @@ export async function retrieveContext(question, disease = null, topic = null, op
   };
 
   const controller = new AbortController();
-  const timeoutMs = options.timeoutMs ?? 20000;
+  const timeoutMs = options.timeoutMs ?? 60000;
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
   try {

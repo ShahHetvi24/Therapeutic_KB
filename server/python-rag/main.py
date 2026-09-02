@@ -1,13 +1,26 @@
 import logging
+from contextlib import asynccontextmanager
 from typing import Literal, Optional, Union, List
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
+from embedding_service import load_embedding_model
 from rag_context import build_rag_context
 
 logging.basicConfig(level=logging.INFO)
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    try:
+        load_embedding_model()
+    except Exception:
+        logging.exception("Failed to load embedding model during startup.")
+        raise
+
+    yield
 
 
 class RetrieveRequest(BaseModel):
@@ -20,7 +33,8 @@ class RetrieveRequest(BaseModel):
 app = FastAPI(
     title="Lymphoma RAG Service",
     description="Retrieval service for the Therapeutic Knowledge Base Assistant",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan,
 )
 
 app.add_middleware(

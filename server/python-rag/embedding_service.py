@@ -1,22 +1,26 @@
 from sentence_transformers import SentenceTransformer
 import math
+import logging
 
 _MODEL = None
+MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+
+logger = logging.getLogger(__name__)
 
 
-def _load_model():
+def load_embedding_model():
     global _MODEL
 
     if _MODEL is None:
-        print("Loading embedding model...")
-        _MODEL = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
-        print("Embedding model loaded: all-MiniLM-L6-v2")
+        logger.info("Loading embedding model...")
+        _MODEL = SentenceTransformer(MODEL_NAME, device="cpu")
+        logger.info("Embedding model loaded successfully.")
 
     return _MODEL
 
 
 def get_embedding_dimension():
-    model = _load_model()
+    model = load_embedding_model()
     return model.get_sentence_embedding_dimension()
 
 
@@ -24,7 +28,7 @@ def generate_embedding(text):
     if not isinstance(text, str) or not text.strip():
         raise ValueError("Text must be a non-empty string.")
 
-    model = _load_model()
+    model = load_embedding_model()
 
     embedding = model.encode(
         text,
