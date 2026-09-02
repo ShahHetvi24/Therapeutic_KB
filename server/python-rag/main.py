@@ -25,7 +25,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://jjqkh58k-5173.inc1.devtunnels.ms/"],
+    allow_origins=["https://6a97303a755b7b07c5c41972--therapeutickb.netlify.app/", "http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
