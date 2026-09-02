@@ -8,7 +8,7 @@ const serverRoot = path.resolve(__dirname, "..");
 
 dotenv.config({ path: path.join(serverRoot, ".env") });
 
-const DEFAULT_RAG_SERVICE_URL = "http://127.0.0.1:8000";
+const DEFAULT_RAG_SERVICE_URL = process.env.RAG_SERVICE_URL || "http://127.0.0.1:8000";
 
 export async function retrieveContext(question, disease = null, topic = null, options = {}) {
   const finalQuestion = typeof question === "string" ? question.trim() : "";
