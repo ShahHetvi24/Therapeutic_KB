@@ -12,15 +12,32 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const clientDistPath = path.resolve(__dirname, "../client/dist");
 
-app.use(
-  cors({
-    origin:
-      process.env.CLIENT_URL ||
-      "http://localhost:5173" ||
-      "https://6a97303a755b7b07c5c41972--therapeutickb.netlify.app/",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin:
+//       process.env.CLIENT_URL ||
+//       "http://localhost:5173" ||
+//       "https://6a97303a755b7b07c5c41972--therapeutickb.netlify.app/",
+//     credentials: true,
+//   })
+// );
+
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://6a97303a755b7b07c5c41972--therapeutickb.netlify.app"
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 app.use(express.json());
 app.use(express.static("public"));

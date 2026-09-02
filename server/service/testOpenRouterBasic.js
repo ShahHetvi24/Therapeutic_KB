@@ -29,7 +29,7 @@ async function main() {
       headers: {
         Authorization: `Bearer ${API_KEY}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": "http://localhost:5173",
+        "HTTP-Referer": ["http://localhost:5173", "https://6a97303a755b7b07c5c41972--therapeutickb.netlify.app/"],
         "X-Title": "Therapeutic Knowledge Base Assistant",
       },
       body: JSON.stringify({
