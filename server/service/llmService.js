@@ -191,8 +191,8 @@ function classifyMedicalIntent(question) {
   if (hasPersonalPattern) return "restricted";
   if (hasGeneralPattern) return "allowed";
 
-  const hasMedicalTerms = /(treatment|therapy|drug|medication|biomarker|dose|patient|disease|guideline|pipeline)/.test(text);
-  const hasPersonalPronouns = /(i|me|my|you|your|patient|doctor|prescribe|take|start|stop|should)/.test(text);
+  const hasMedicalTerms = /\b(?:treatment|therapy|drug|medication|biomarker|dose|patient|disease|guideline|pipeline)\b/.test(text);
+  const hasPersonalPronouns = /\b(?:i|me|my|you|your|patient|doctor|prescribe|take|start|stop|should)\b/.test(text);
 
   if (hasMedicalTerms && hasPersonalPronouns) {
     return "restricted";
