@@ -17,7 +17,7 @@ app.use(
     origin:
       process.env.CLIENT_URL ||
       "http://localhost:5173" ||
-      "http://localhost:3000",
+      "https://6a97303a755b7b07c5c41972--therapeutickb.netlify.app/",
     credentials: true,
   })
 );
